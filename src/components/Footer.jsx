@@ -1,65 +1,91 @@
-import { Mail, Instagram, Linkedin } from 'lucide-react';
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-700 pt-14 pb-10 text-sm transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-        
-        {/* Brand */}
-        <div>
-          <h2 className="text-2xl font-extrabold text-blue-600 dark:text-blue-400 mb-2">Simplora Consulting</h2>
-          <p className="text-gray-500 dark:text-gray-400">
-            Your systems. Our responsibility. We customize, automate, and manage the tools that power your business.
-          </p>
+    <footer className="bg-gray-900 text-white py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="md:col-span-2 space-y-6">
+            <div>
+              <div className="relative inline-block mb-6">
+                <img
+                  className="h-24 w-auto transition-all duration-300 hover:scale-105"
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/51b05e8ea_logo544.png"
+                  alt="Optamyze Logo"
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                <div className="absolute -inset-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              </div>
+              <p className="text-gray-400 font-medium leading-relaxed max-w-md">
+                We make your systems work better through customization, automation, integrations, 
+                and ongoing support — so you can focus on growing your business.
+              </p>
+            </div>
+            
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-[#ED1C5B]" />
+                <span className="font-medium">hello@optamyze.com</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-[#ED1C5B]" />
+                <span className="font-medium">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-5 h-5 text-[#ED1C5B]" />
+                <span className="font-medium">New York, NY</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 tracking-tight">Services</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="#" className="hover:text-white transition-colors font-medium">System Customization</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Automation & Workflows</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Platform Integrations</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Ongoing Support</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Data Services</a></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 tracking-tight">Company</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li><a href="/About" className="hover:text-white transition-colors font-medium">About Us</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Case Studies</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Careers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors font-medium">Contact</a></li>
+            </ul>
+          </div>
         </div>
 
-        {/* Navigation */}
-        <div>
-          <h3 className="font-semibold text-gray-800 dark:text-white mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            {['Services', 'Features', 'Clients', 'Contact'].map((item) => (
-              <li key={item}>
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="text-gray-400 text-sm font-medium">
+            © 2024 Optamyze. All rights reserved. We make your systems work better.
+          </div>
+          
+          {/* Social Links */}
+          <div className="flex space-x-4">
+            <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#ED1C5B] transition-colors duration-300">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#ED1C5B] transition-colors duration-300">
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#ED1C5B] transition-colors duration-300">
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
         </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="font-semibold text-gray-800 dark:text-white mb-4">Connect</h3>
-          <ul className="space-y-3">
-            <li className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <a href="mailto:hello@simplora.co" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                hello@simplora.co
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Instagram className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <a href="https://instagram.com/simploraconsulting" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                @simploraconsulting
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <a href="https://linkedin.com/company/simploraconsulting" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                LinkedIn
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Bottom */}
-      <div className="mt-12 text-center text-xs text-gray-400 dark:text-gray-500 px-4 space-y-1">
-        <p>© {new Date().getFullYear()} Simplora Consulting. All rights reserved.</p>
-        <p className="text-gray-400 dark:text-gray-600">Designed by Simplora Consulting</p>
       </div>
     </footer>
   );
