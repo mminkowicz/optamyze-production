@@ -267,11 +267,11 @@ export default function Contact() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
                 <p className="text-gray-600 mb-6">
-                  Thank you for reaching out. We'll get back to you within 2 hours with a custom proposal.
+                  Thank you for reaching out. We'll get back to you soon with a custom proposal.
                 </p>
                 <div className="bg-blue-50 rounded-xl p-4">
                   <p className="text-sm text-blue-700">
-                    📧 Check your email for a confirmation and next steps.
+                    📧 Check your email for a confirmation.
                   </p>
                 </div>
               </motion.div>
