@@ -1,14 +1,51 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Mail } from "lucide-react";
+import { Linkedin, Twitter, Mail, Zap, Settings, Users, Target, Database, Headphones } from "lucide-react";
 
 const team = [
   {
-    name: "Sarah Johnson",
+    name: "Mendel Minkowicz",
     role: "CEO & Systems Strategist",
     bio: "10+ years optimizing business systems with expertise in CRM customization, automation design, and strategic technology alignment.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    icon: Zap,
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      email: "mendel@optamyze.com"
+    }
+  },
+  {
+    name: "Jonathan Hakari",
+    role: "Lead Integration Specialist",
+    bio: "Expert in platform integrations and automation workflows, specializing in connecting complex tech stacks seamlessly.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+    icon: Settings,
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      email: "jonathan@optamyze.com"
+    }
+  },
+  {
+    name: "Alex Rivera",
+    role: "Automation Engineer",
+    bio: "Workflow optimization specialist with a track record of designing intelligent automations that save businesses hours every day.",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+    icon: Target,
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      email: "alex@optamyze.com"
+    }
+  },
+  {
+    name: "Sarah Chen",
+    role: "Customization Expert",
+    bio: "Specializes in CRM customization and system configuration, ensuring every platform perfectly matches client workflows.",
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b631?w=300&h=300&fit=crop&crop=face",
+    icon: Database,
     social: {
       linkedin: "#",
       twitter: "#",
@@ -16,58 +53,27 @@ const team = [
     }
   },
   {
-    name: "Michael Chen",
-    role: "Lead Integration Specialist",
-    bio: "Expert in platform integrations and automation workflows, specializing in connecting complex tech stacks seamlessly.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "michael@optamyze.com"
-    }
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Automation Engineer",
-    bio: "Workflow optimization specialist with a track record of designing intelligent automations that save businesses hours every day.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "emily@optamyze.com"
-    }
-  },
-  {
-    name: "David Park",
-    role: "Customization Expert",
-    bio: "Specializes in CRM customization and system configuration, ensuring every platform perfectly matches client workflows.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "david@optamyze.com"
-    }
-  },
-  {
-    name: "Lisa Thompson",
+    name: "Marcus Johnson",
     role: "Client Success Manager",
     bio: "Dedicated to ensuring seamless system implementations and providing ongoing support for optimal performance.",
-    avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+    icon: Users,
     social: {
       linkedin: "#",
       twitter: "#",
-      email: "lisa@optamyze.com"
+      email: "marcus@optamyze.com"
     }
   },
   {
-    name: "James Wilson",
+    name: "Emma Thompson",
     role: "Data Services Specialist",
     bio: "Expert in data cleanup, migration, and management — ensuring your business data is clean, organized, and actionable.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop&crop=face",
+    icon: Headphones,
     social: {
       linkedin: "#",
       twitter: "#",
-      email: "james@optamyze.com"
+      email: "emma@optamyze.com"
     }
   }
 ];
@@ -117,13 +123,18 @@ export default function TeamSection() {
                 </div>
                 
                 <div className="p-8 space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 tracking-tight mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-lg">
-                      {member.role}
-                    </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl flex items-center justify-center">
+                      <member.icon className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 tracking-tight mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold text-lg">
+                        {member.role}
+                      </p>
+                    </div>
                   </div>
                   
                   <p className="text-gray-600 leading-relaxed font-medium">
