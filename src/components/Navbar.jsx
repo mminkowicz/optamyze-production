@@ -5,7 +5,6 @@ import { Menu, X, ArrowRight, ChevronDown, ArrowUp } from "lucide-react";
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Services", href: "#services" },
-  { name: "Case Studies", href: "#case-studies" },
   { name: "Contact", href: "#contact" },
   { name: "About", href: "/about" },
 ];
