@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown, ArrowUp } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -39,6 +40,8 @@ const mobileMenuItemVariants = {
 };
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -53,12 +56,24 @@ export default function Navbar() {
 
   const scrollToSection = (href) => {
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      // If we're not on the homepage, navigate there first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait a bit for the page to load, then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else if (href.startsWith('/')) {
-      window.location.href = href;
+      navigate(href);
     }
     setIsOpen(false);
     setAboutDropdownOpen(false);
