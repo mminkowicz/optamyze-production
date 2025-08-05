@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Clock, CheckCircle, ArrowRight, Calendar } from 'lucide-react';
 import { Button } from './ui/button';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../config/emailjs';
 
 const contactMethods = [
   {
@@ -41,6 +43,7 @@ const benefits = [
 ];
 
 export default function Contact() {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,20 +54,25 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after showing success
-    setTimeout(() => {
-      setIsSubmitted(false);
+    try {
+      const result = await emailjs.sendForm(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        form.current,
+        emailjsConfig.publicKey
+      );
+      
+      console.log('Email sent successfully:', result.text);
+      setIsSubmitted(true);
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -73,7 +81,18 @@ export default function Contact() {
         message: '',
         timeline: ''
       });
-    }, 5000);
+      
+      // Reset form fields
+      if (form.current) {
+        form.current.reset();
+      }
+      
+    } catch (error) {
+      console.error('Email send failed:', error.text);
+      setError('Failed to send message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -119,7 +138,12 @@ export default function Contact() {
             {!isSubmitted ? (
               <>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Start Your Project</h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6">
+                    {error}
+                  </div>
+                )}
+                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -127,7 +151,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
-                        name="name"
+                        name="user_name"
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -141,7 +165,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="email"
-                        name="email"
+                        name="user_email"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -158,7 +182,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="text"
-                        name="company"
+                        name="user_company"
                         value={formData.company}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -171,7 +195,7 @@ export default function Contact() {
                       </label>
                       <input
                         type="tel"
-                        name="phone"
+                        name="user_phone"
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -185,7 +209,7 @@ export default function Contact() {
                       Timeline
                     </label>
                     <select
-                      name="timeline"
+                      name="user_timeline"
                       value={formData.timeline}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -203,7 +227,7 @@ export default function Contact() {
                       Tell us about your project *
                     </label>
                     <textarea
-                      name="message"
+                      name="user_message"
                       value={formData.message}
                       onChange={handleChange}
                       required

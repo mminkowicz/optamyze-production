@@ -1,0 +1,20 @@
+NEW CONTACT FORM SUBMISSION
+
+Contact Information:
+- Name: {{user_name}}
+- Email: {{user_email}}
+- Company: {{user_company}}
+- Phone: {{user_phone}}
+- Timeline: {{user_timeline}}
+
+Project Details:
+{{user_message}}
+
+Next Steps:
+- Review the project requirements
+- Schedule a consultation call
+- Prepare a custom proposal
+- Follow up within 2 hours
+
+This message was sent from the Optamyze contact form.
+Submitted on: [Current Date] 
