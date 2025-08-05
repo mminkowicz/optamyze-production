@@ -45,12 +45,12 @@ const benefits = [
 export default function Contact() {
   const form = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: '',
-    timeline: ''
+    user_name: '',
+    user_email: '',
+    user_company: '',
+    user_phone: '',
+    user_message: '',
+    user_timeline: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -74,12 +74,12 @@ export default function Contact() {
       
       // Reset form
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: '',
-        timeline: ''
+        user_name: '',
+        user_email: '',
+        user_company: '',
+        user_phone: '',
+        user_message: '',
+        user_timeline: ''
       });
       
       // Reset form fields
@@ -152,7 +152,7 @@ export default function Contact() {
                       <input
                         type="text"
                         name="user_name"
-                        value={formData.name}
+                        value={formData.user_name || ''}
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -166,7 +166,7 @@ export default function Contact() {
                       <input
                         type="email"
                         name="user_email"
-                        value={formData.email}
+                        value={formData.user_email || ''}
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -183,7 +183,7 @@ export default function Contact() {
                       <input
                         type="text"
                         name="user_company"
-                        value={formData.company}
+                        value={formData.user_company || ''}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         placeholder="Your Company"
@@ -196,7 +196,7 @@ export default function Contact() {
                       <input
                         type="tel"
                         name="user_phone"
-                        value={formData.phone}
+                        value={formData.user_phone || ''}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                         placeholder="+1 (555) 123-4567"
@@ -210,7 +210,7 @@ export default function Contact() {
                     </label>
                     <select
                       name="user_timeline"
-                      value={formData.timeline}
+                      value={formData.user_timeline || ''}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     >
@@ -228,7 +228,7 @@ export default function Contact() {
                     </label>
                     <textarea
                       name="user_message"
-                      value={formData.message}
+                      value={formData.user_message || ''}
                       onChange={handleChange}
                       required
                       rows={4}
