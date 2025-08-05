@@ -47,7 +47,6 @@ export default function Contact() {
     company: '',
     phone: '',
     message: '',
-    budget: '',
     timeline: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -72,7 +71,6 @@ export default function Contact() {
         company: '',
         phone: '',
         message: '',
-        budget: '',
         timeline: ''
       });
     }, 5000);
@@ -182,41 +180,22 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Budget Range
-                      </label>
-                      <select
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      >
-                        <option value="">Select budget range</option>
-                        <option value="5k-15k">$5,000 - $15,000</option>
-                        <option value="15k-50k">$15,000 - $50,000</option>
-                        <option value="50k-100k">$50,000 - $100,000</option>
-                        <option value="100k+">$100,000+</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Timeline
-                      </label>
-                      <select
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                      >
-                        <option value="">Select timeline</option>
-                        <option value="1-3months">1-3 months</option>
-                        <option value="3-6months">3-6 months</option>
-                        <option value="6-12months">6-12 months</option>
-                        <option value="12months+">12+ months</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Timeline
+                    </label>
+                    <select
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="">Select timeline</option>
+                      <option value="1-3months">1-3 months</option>
+                      <option value="3-6months">3-6 months</option>
+                      <option value="6-12months">6-12 months</option>
+                      <option value="12months+">12+ months</option>
+                    </select>
                   </div>
 
                   <div>

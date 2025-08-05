@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Mail, Phone, Linkedin, Twitter, Github } from "lucide-react";
+import { Mail, Phone, Linkedin, Twitter } from "lucide-react";
 
 const footerLinks = {
   services: [
@@ -19,8 +19,7 @@ const footerLinks = {
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:bg-blue-600" },
   { name: "Twitter", icon: Twitter, href: "#", color: "hover:bg-sky-500" },
-  { name: "GitHub", icon: Github, href: "#", color: "hover:bg-gray-800" },
-  { name: "Email", icon: Mail, href: "mailto:hello@optamyze.com", color: "hover:bg-red-500" }
+  { name: "Email", icon: Mail, href: "mailto:mendel@optamyze.com", color: "hover:bg-red-500" }
 ];
 
 export default function Footer() {
@@ -47,11 +46,11 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-sm text-gray-300">hello@optamyze.com</span>
+                <span className="text-sm text-gray-300">mendel@optamyze.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-blue-400" />
-                <span className="text-sm text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-sm text-gray-300">+1 (678) 612-8355</span>
               </div>
             </div>
           </div>
