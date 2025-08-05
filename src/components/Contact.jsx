@@ -37,12 +37,7 @@ const contactMethods = [
   }
 ];
 
-const benefits = [
-  'Free system audit and recommendations',
-  'Custom implementation roadmap',
-  'No-obligation consultation',
-  'Quick response time'
-];
+
 
 export default function Contact() {
   const form = useRef();
@@ -332,25 +327,7 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Benefits */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">What You'll Get</h3>
-              <div className="space-y-4">
-                {benefits.map((benefit, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-3"
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+
 
             {/* Office Hours */}
             <div className="bg-white rounded-2xl shadow-soft p-6">

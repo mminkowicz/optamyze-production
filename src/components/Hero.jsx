@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from "react";
-import { ArrowRight, Sparkles, CheckCircle, Play, Zap, Shield } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle, Zap, Shield } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -103,7 +103,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              We design, build, and optimize CRM systems that actually work. 
+              We design, build, and optimize systems that actually work. 
               <span className="text-blue-600 font-semibold"> 300% average efficiency boost</span> for businesses like yours.
             </p>
           </motion.div>
@@ -137,17 +137,19 @@ export default function Hero() {
             <Button 
               size="lg" 
               className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-large shadow-blue-500/25 transition-all duration-300 hover:scale-105 hover:shadow-glow"
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Start Your Free Consultation
+              View Services
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="group border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-              Watch Demo (2 min)
+              <ArrowRight className="mr-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Speak to a Systems Expert
             </Button>
           </motion.div>
 
