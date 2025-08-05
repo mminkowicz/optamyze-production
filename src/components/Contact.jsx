@@ -11,10 +11,11 @@ const contactMethods = [
   {
     icon: Mail,
     title: 'Email Us',
-    description: 'Get a response within 2 hours',
+    description: 'Get a response soon',
     value: 'mendel@optamyze.com',
     action: 'Send Email',
-    color: 'blue'
+    color: 'blue',
+    link: 'mailto:mendel@optamyze.com'
   },
   {
     icon: Phone,
@@ -22,7 +23,8 @@ const contactMethods = [
     description: 'Speak with an expert today',
     value: '+1 (678) 612-8355',
     action: 'Call Now',
-    color: 'green'
+    color: 'green',
+    link: 'tel:+16786128355'
   },
   {
     icon: Calendar,
@@ -39,7 +41,7 @@ const benefits = [
   'Free system audit and recommendations',
   'Custom implementation roadmap',
   'No-obligation consultation',
-  'Response within 2 hours'
+  'Quick response time'
 ];
 
 export default function Contact() {
@@ -267,7 +269,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
                 <p className="text-gray-600 mb-6">
-                  Thank you for reaching out. We'll get back to you soon with a custom proposal.
+                  Thank you for reaching out. We'll get back to you within the hour.
                 </p>
                 <div className="bg-blue-50 rounded-xl p-4">
                   <p className="text-sm text-blue-700">
@@ -314,28 +316,18 @@ export default function Contact() {
                     <p className="text-sm text-gray-600 mb-2">{method.description}</p>
                     <p className="text-lg font-semibold text-gray-900">{method.value}</p>
                   </div>
-                  {method.link ? (
-                    <a 
-                      href={method.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
-                        method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
-                        method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
-                        'bg-purple-600 hover:bg-purple-700'
-                      }`}
-                    >
-                      {method.action}
-                    </a>
-                  ) : (
-                    <button className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
+                  <a 
+                    href={method.link}
+                    target={method.link.startsWith('http') ? '_blank' : '_self'}
+                    rel={method.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                    className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
                       method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
                       method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
                       'bg-purple-600 hover:bg-purple-700'
-                    }`}>
-                      {method.action}
-                    </button>
-                  )}
+                    }`}
+                  >
+                    {method.action}
+                  </a>
                 </motion.div>
               ))}
             </div>
