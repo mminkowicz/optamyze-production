@@ -3,34 +3,36 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import OurStory from './components/OurStory';
+import Clients from './components/Clients';
 import Services from './components/Services';
-import Transformation from './components/Transformation';
-import Testimonials from './components/Testimonials';
-import CTA from './components/CTA';
+import CaseStudies from './components/CaseStudies';
+
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import About from './pages/About';      // ← make sure this file exists
-// (Removed the broken import for ./pages/Home)
+import AboutPage from './pages/About';
 
 function HomePage() {
   return (
     <>
       <Hero />
+      <OurStory />
       <Services />
-      <Transformation />
-      <Testimonials />
-      <CTA />
+      <CaseStudies />
+      <Clients />
+      <Contact />
     </>
   );
 }
 
 function App() {
   return (
-    <div className="font-sans bg-white text-gray-900">
+    <div className="font-sans bg-white text-gray-900 antialiased">
       <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
         <Footer />
       </Router>

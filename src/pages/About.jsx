@@ -1,16 +1,10 @@
 import React from "react";
-import TeamSection from "../components/about/TeamSection";
-import AboutHero from "../components/about/AboutHero";
-import Mission from "../components/about/Mission";
-import Values from "../components/about/Values";
+import About from "../components/About";
 
-export default function About() {
+export default function AboutPage() {
   return (
     <div className="bg-white">
-      <AboutHero />
-      <Mission />
-      <Values />
-      <TeamSection />
+      <About />
     </div>
   );
 }
