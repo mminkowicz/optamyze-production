@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, Clock, CheckCircle, ArrowRight, Calendar } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, Clock, CheckCircle, ArrowRight, Calendar, X } from 'lucide-react';
 import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 import { emailjsConfig } from '../config/emailjs';
@@ -52,6 +52,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [showMeetingModal, setShowMeetingModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -98,6 +99,29 @@ export default function Contact() {
       [e.target.name]: e.target.value
     });
   };
+
+  const handleBookMeeting = () => {
+    setShowMeetingModal(true);
+  };
+
+  // Load HubSpot meetings script when modal opens
+  useEffect(() => {
+    if (showMeetingModal) {
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+      script.async = true;
+      document.body.appendChild(script);
+
+      return () => {
+        // Clean up script when modal closes
+        const existingScript = document.querySelector('script[src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"]');
+        if (existingScript) {
+          document.body.removeChild(existingScript);
+        }
+      };
+    }
+  }, [showMeetingModal]);
 
   return (
     <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-white">
@@ -311,18 +335,31 @@ export default function Contact() {
                     <p className="text-sm text-gray-600 mb-2">{method.description}</p>
                     <p className="text-lg font-semibold text-gray-900">{method.value}</p>
                   </div>
-                  <a 
-                    href={method.link}
-                    target={method.link.startsWith('http') ? '_blank' : '_self'}
-                    rel={method.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
-                      method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
-                      method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
-                      'bg-purple-600 hover:bg-purple-700'
-                    }`}
-                  >
-                    {method.action}
-                  </a>
+                  {method.action === 'Book Now' ? (
+                    <button
+                      onClick={handleBookMeeting}
+                      className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
+                        method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
+                        method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
+                        'bg-purple-600 hover:bg-purple-700'
+                      }`}
+                    >
+                      {method.action}
+                    </button>
+                  ) : (
+                    <a 
+                      href={method.link}
+                      target={method.link.startsWith('http') ? '_blank' : '_self'}
+                      rel={method.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                      className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
+                        method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
+                        method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
+                        'bg-purple-600 hover:bg-purple-700'
+                      }`}
+                    >
+                      {method.action}
+                    </a>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -353,6 +390,43 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+
+      {/* Meeting Modal */}
+      <AnimatePresence>
+        {showMeetingModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowMeetingModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex justify-between items-center p-6 border-b border-gray-200">
+                <h3 className="text-2xl font-bold text-gray-900">Schedule Your Free Consultation</h3>
+                <button
+                  onClick={() => setShowMeetingModal(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              {/* Modal Content */}
+              <div className="p-6 min-h-[600px]">
+                <div className="meetings-iframe-container" data-src="https://meetings.hubspot.com/minkowicz/intro-call?embed=true"></div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 } 

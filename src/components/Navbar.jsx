@@ -85,7 +85,7 @@ export default function Navbar() {
         scrolled ? "bg-white shadow-lg border-b border-gray-100" : "bg-white"
       }`}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-28">
             {/* Logo */}
             <motion.a 
               href="/" 
@@ -95,7 +95,7 @@ export default function Navbar() {
             >
               <div className="relative">
                 <img
-                  className="h-20 w-auto transition-all duration-300 group-hover:brightness-110"
+                  className="h-28 w-auto transition-all duration-300 group-hover:brightness-110"
                   src="/logoof.svg"
                   alt="Optamyze - Systems Optimization Experts"
                 />
