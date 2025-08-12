@@ -79,20 +79,19 @@ export const OptimizedMotion = ({
   ...props 
 }) => {
   const { shouldDisableAnimations } = usePerformance();
+  const [motion, setMotion] = useState(null);
+
+  useEffect(() => {
+    // Import motion dynamically to reduce bundle size
+    import('framer-motion').then(({ motion: m }) => {
+      setMotion(() => m.div);
+    });
+  }, []);
 
   // If animations should be disabled, render without motion
   if (shouldDisableAnimations) {
     return <div {...props}>{children}</div>;
   }
-
-  // Import motion dynamically to reduce bundle size
-  const [motion, setMotion] = useState(null);
-
-  useEffect(() => {
-    import('framer-motion').then(({ motion: m }) => {
-      setMotion(() => m.div);
-    });
-  }, []);
 
   if (!motion) {
     return <div {...props}>{children}</div>;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight, Sparkles, CheckCircle, Zap, Shield } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";

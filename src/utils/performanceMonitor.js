@@ -117,8 +117,8 @@ class PerformanceMonitor {
         rtt: navigator.connection.rtt
       } : 'Unknown',
       screen: {
-        width: screen.width,
-        height: screen.height,
+        width: window.screen.width,
+        height: window.screen.height,
         pixelRatio: window.devicePixelRatio
       }
     };
