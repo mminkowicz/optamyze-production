@@ -11,6 +11,21 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Performance optimizations */
+    text-rendering: optimizeSpeed;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Custom scrollbar */
@@ -41,6 +56,31 @@
     background: #3b82f6;
     color: white;
   }
+
+  /* Performance optimizations for images */
+  img {
+    max-width: 100%;
+    height: auto;
+    /* Prevent layout shift */
+    aspect-ratio: attr(width) / attr(height);
+  }
+
+  /* Optimize for mobile performance */
+  @media (max-width: 768px) {
+    /* Reduce blur effects on mobile */
+    .blur-3xl {
+      filter: blur(16px);
+    }
+    
+    /* Reduce shadow complexity */
+    .shadow-soft {
+      box-shadow: 0 2px 8px -3px rgba(0, 0, 0, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+    }
+    
+    .shadow-large {
+      box-shadow: 0 8px 25px -10px rgba(0, 0, 0, 0.15), 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+    }
+  }
 }
 
 @layer components {
@@ -69,35 +109,35 @@
 
   /* Section spacing */
   .section-padding {
-    @apply py-24;
+    @apply py-16 sm:py-20 lg:py-24;
   }
 
   .container-padding {
-    @apply px-6;
+    @apply px-4 sm:px-6;
   }
 
   /* Typography utilities */
   .heading-1 {
-    @apply text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight;
+    @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight;
   }
 
   .heading-2 {
-    @apply text-3xl lg:text-4xl font-bold leading-tight;
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight;
   }
 
   .heading-3 {
-    @apply text-2xl lg:text-3xl font-bold leading-tight;
+    @apply text-xl sm:text-2xl lg:text-3xl font-bold leading-tight;
   }
 
   .body-large {
-    @apply text-lg lg:text-xl leading-relaxed;
+    @apply text-base sm:text-lg lg:text-xl leading-relaxed;
   }
 
   .body-medium {
-    @apply text-base lg:text-lg leading-relaxed;
+    @apply text-sm sm:text-base lg:text-lg leading-relaxed;
   }
 
-  /* Animation utilities */
+  /* Animation utilities - with reduced motion support */
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -106,18 +146,32 @@
     animation: bounce-gentle 2s infinite;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-bounce-gentle {
+      animation: none;
+    }
+  }
+
   /* Focus styles */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
   }
 
-  /* Glass morphism */
+  /* Glass morphism - optimized for mobile */
   .glass {
     @apply bg-white/70 backdrop-blur-lg border border-white/30;
   }
 
   .glass-dark {
     @apply bg-gray-900/70 backdrop-blur-lg border border-gray-700/30;
+  }
+
+  @media (max-width: 768px) {
+    .glass,
+    .glass-dark {
+      backdrop-filter: blur(8px);
+    }
   }
 }
 
@@ -141,7 +195,7 @@
     overflow: hidden;
   }
 
-  /* Custom animations */
+  /* Custom animations - with reduced motion support */
   @keyframes float {
     0%, 100% {
       transform: translateY(0px);
@@ -171,15 +225,36 @@
 
   /* Responsive utilities */
   .container-responsive {
-    @apply max-w-7xl mx-auto px-6;
+    @apply max-w-7xl mx-auto px-4 sm:px-6;
   }
 
   /* Grid utilities */
   .grid-auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .grid-auto-fill {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  /* Performance utilities */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .mobile-optimize {
+      /* Reduce transform complexity on mobile */
+      transform: none !important;
+    }
+    
+    .mobile-reduce-blur {
+      filter: blur(8px);
+    }
   }
 }

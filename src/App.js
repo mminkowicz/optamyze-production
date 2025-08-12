@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { PerformanceProvider } from './components/PerformanceOptimizer';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -25,16 +26,18 @@ function HomePage() {
 
 function App() {
   return (
-    <div className="font-sans bg-white text-gray-900 antialiased">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+    <PerformanceProvider>
+      <div className="font-sans bg-white text-gray-900 antialiased">
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </PerformanceProvider>
   );
 }
 
