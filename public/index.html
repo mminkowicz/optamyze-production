@@ -1,82 +1,92 @@
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#667eea" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#667eea" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Optamyze - Business Systems Optimization & CRM Experts | 300% Efficiency Boost</title>
+    <meta name="title" content="Optamyze - Business Systems Optimization & CRM Experts | 300% Efficiency Boost" />
+    <meta name="description" content="Transform your business systems into growth engines. We design, build, and optimize CRM systems that deliver 300% average efficiency boost. Free consultation available." />
+    <meta name="keywords" content="business systems optimization, CRM systems, automation, business process improvement, system integration, workflow automation, business efficiency, digital transformation, process optimization, business consulting" />
+    <meta name="author" content="Optamyze" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://optamyze.com/" />
+    <meta property="og:title" content="Optamyze - Business Systems Optimization & CRM Experts" />
+    <meta property="og:description" content="Transform your business systems into growth engines. We design, build, and optimize CRM systems that deliver 300% average efficiency boost." />
+    <meta property="og:image" content="https://optamyze.com/og-image.jpg" />
+    <meta property="og:site_name" content="Optamyze" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://optamyze.com/" />
+    <meta property="twitter:title" content="Optamyze - Business Systems Optimization & CRM Experts" />
+    <meta property="twitter:description" content="Transform your business systems into growth engines. We design, build, and optimize CRM systems that deliver 300% average efficiency boost." />
+    <meta property="twitter:image" content="https://optamyze.com/og-image.jpg" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+    <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
+    <link rel="canonical" href="https://optamyze.com/" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Optamyze",
+      "url": "https://optamyze.com",
+      "logo": "https://optamyze.com/logoof.svg",
+      "description": "Business systems optimization and CRM experts helping businesses achieve 300% efficiency boost",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-678-612-8355",
+        "contactType": "customer service",
+        "email": "mendel@optamyze.com"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/optamyze",
+        "https://twitter.com/optamyze"
+      ]
+    }
+    </script>
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="%PUBLIC_URL%/logoof.svg" as="image" />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS5NF3BY0S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SS5NF3BY0S');
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
 
-  <!-- Primary SEO Meta Tags -->
-  <title>Optamyze | Business Systems Consulting, CRM Experts & Automation Solutions</title>
-  <meta name="title" content="Optamyze | Business Systems Consulting, CRM Experts & Automation Solutions" />
-  <meta name="description" content="Optamyze helps businesses simplify and optimize their operations through CRM consulting, workflow automation, integrations, and system solutions. Discover why companies choose Optamyze for growth and efficiency." />
-  <meta name="keywords" content="Optamyze, business systems optimization, CRM consulting, automation, workflow optimization, system integration, Salesforce, HubSpot, ClickUp, Monday.com, business consulting" />
-  <meta name="author" content="Optamyze" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://optamyze.com/" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://optamyze.com/" />
-  <meta property="og:site_name" content="Optamyze" />
-  <meta property="og:title" content="Optamyze | Business Systems Consulting & CRM Experts" />
-  <meta property="og:description" content="Optamyze transforms business systems into growth engines. We specialize in CRM consulting, automation, integrations, and workflow optimization." />
-  <meta property="og:image" content="https://optamyze.com/og-image.jpg" />
-  <meta property="og:locale" content="en_US" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://optamyze.com/" />
-  <meta name="twitter:title" content="Optamyze | Business Systems Consulting & CRM Experts" />
-  <meta name="twitter:description" content="Simplify and optimize your business with Optamyze. CRM consulting, automation, integrations, and system solutions." />
-  <meta name="twitter:image" content="https://optamyze.com/og-image.jpg" />
-
-  <!-- Verification Tags -->
-  <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
-  <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Optamyze",
-    "url": "https://optamyze.com",
-    "logo": "https://optamyze.com/logoof.svg",
-    "description": "Optamyze is a business systems consulting and CRM optimization company, helping businesses streamline operations through automation, integrations, and workflow solutions.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-678-612-8355",
-      "contactType": "customer service",
-      "email": "mendel@optamyze.com"
-    },
-    "sameAs": [
-      "https://linkedin.com/company/optamyze",
-      "https://twitter.com/optamyze"
-    ]
-  }
-  </script>
-
-  <!-- Apple + Manifest -->
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Preload -->
-  <link rel="preload" href="%PUBLIC_URL%/logoof.svg" as="image" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SS5NF3BY0S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SS5NF3BY0S');
-  </script>
-</head>
