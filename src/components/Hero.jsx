@@ -29,7 +29,7 @@ export default function Hero() {
   const shouldDisableAnimations = isMobile || isReducedMotion;
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <section className="relattive min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Static background for all devices - no animations */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-2xl" />
