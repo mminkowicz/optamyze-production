@@ -11,7 +11,6 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Performance optimizations */
     text-rendering: optimizeSpeed;
     -webkit-text-size-adjust: 100%;
   }
@@ -25,6 +24,55 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+
+  /* Mobile performance optimizations */
+  @media (max-width: 768px) {
+    /* Disable all animations and heavy effects on mobile */
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      filter: none !important;
+      backdrop-filter: none !important;
+    }
+    
+    /* Remove blur effects */
+    .blur-2xl,
+    .blur-3xl {
+      filter: none !important;
+    }
+    
+    /* Simplify gradients */
+    .bg-gradient-to-br,
+    .bg-gradient-to-r,
+    .bg-gradient-to-t {
+      background: #ffffff !important;
+    }
+    
+    /* Remove complex shadows */
+    .shadow-soft,
+    .shadow-large,
+    .shadow-glow {
+      box-shadow: none !important;
+    }
+    
+    /* Disable hover effects */
+    .hover\:scale-105:hover,
+    .hover\:shadow-lg:hover,
+    .hover\:shadow-glow:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Simplify text effects */
+    .bg-clip-text {
+      -webkit-background-clip: unset !important;
+      background-clip: unset !important;
+      color: #3b82f6 !important;
     }
   }
 
@@ -61,85 +109,22 @@
   img {
     max-width: 100%;
     height: auto;
-    /* Prevent layout shift */
-    aspect-ratio: attr(width) / attr(height);
-  }
-
-  /* Aggressive mobile performance optimizations */
-  @media (max-width: 768px) {
-    /* Disable all animations on mobile for maximum performance */
-    *,
-    *::before,
-    *::after {
-      animation: none !important;
-      transition: none !important;
-      transform: none !important;
-    }
-    
-    /* Reduce blur effects on mobile */
-    .blur-3xl {
-      filter: blur(8px);
-    }
-    
-    .blur-2xl {
-      filter: blur(4px);
-    }
-    
-    /* Reduce shadow complexity */
-    .shadow-soft {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .shadow-large {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Disable hover effects on mobile */
-    .hover\:scale-105:hover {
-      transform: none !important;
-    }
-    
-    .hover\:shadow-lg:hover {
-      box-shadow: none !important;
-    }
-    
-    .hover\:shadow-glow:hover {
-      box-shadow: none !important;
-    }
-    
-    /* Reduce gradient complexity */
-    .bg-gradient-to-br {
-      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #eff6ff 100%);
-    }
-    
-    .bg-gradient-to-r {
-      background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
-    }
   }
 }
 
 @layer components {
   /* Custom button styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105;
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors;
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 font-semibold py-3 px-6 rounded-xl transition-all duration-300;
+    @apply bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 font-semibold py-3 px-6 rounded-lg transition-colors;
   }
 
   /* Card styles */
   .card {
-    @apply bg-white rounded-2xl shadow-soft hover:shadow-large transition-all duration-500 border border-gray-100;
-  }
-
-  .card-hover {
-    @apply hover:-translate-y-2 hover:scale-[1.02];
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
+    @apply bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow;
   }
 
   /* Section spacing */
@@ -172,42 +157,9 @@
     @apply text-xs sm:text-sm lg:text-base leading-relaxed;
   }
 
-  /* Animation utilities - with reduced motion support */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-bounce-gentle {
-    animation: bounce-gentle 2s infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .animate-float,
-    .animate-bounce-gentle {
-      animation: none;
-    }
-  }
-
   /* Focus styles */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
-  }
-
-  /* Glass morphism - optimized for mobile */
-  .glass {
-    @apply bg-white/70 backdrop-blur-lg border border-white/30;
-  }
-
-  .glass-dark {
-    @apply bg-gray-900/70 backdrop-blur-lg border border-gray-700/30;
-  }
-
-  @media (max-width: 768px) {
-    .glass,
-    .glass-dark {
-      backdrop-filter: none;
-      background: rgba(255, 255, 255, 0.9);
-    }
   }
 }
 
@@ -231,37 +183,9 @@
     overflow: hidden;
   }
 
-  /* Custom animations - with reduced motion support */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes bounce-gentle {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
   /* Responsive utilities */
   .container-responsive {
-    @apply max-w-7xl mx-auto px-4 sm:px-6;
+    @apply max-w-6xl mx-auto px-4 sm:px-6;
   }
 
   /* Grid utilities */
@@ -271,49 +195,5 @@
 
   .grid-auto-fill {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-
-  /* Performance utilities */
-  .will-change-transform {
-    will-change: transform;
-  }
-
-  .will-change-opacity {
-    will-change: opacity;
-  }
-
-  /* Mobile-specific optimizations */
-  @media (max-width: 768px) {
-    .mobile-optimize {
-      /* Reduce transform complexity on mobile */
-      transform: none !important;
-    }
-    
-    .mobile-reduce-blur {
-      filter: blur(4px);
-    }
-    
-    /* Disable all transitions on mobile */
-    .transition-all,
-    .transition-colors,
-    .transition-transform {
-      transition: none !important;
-    }
-    
-    /* Simplify gradients on mobile */
-    .bg-gradient-to-br,
-    .bg-gradient-to-r,
-    .bg-gradient-to-t {
-      background: #f8fafc !important;
-    }
-    
-    /* Reduce text complexity */
-    .font-black {
-      font-weight: 700;
-    }
-    
-    .font-display {
-      font-family: inherit;
-    }
   }
 }
