@@ -29,14 +29,13 @@
 
   /* Mobile performance optimizations */
   @media (max-width: 768px) {
-    /* Disable all animations and heavy effects on mobile */
+    /* Disable heavy animations and effects on mobile */
     *,
     *::before,
     *::after {
       animation: none !important;
       transition: none !important;
       transform: none !important;
-      filter: none !important;
       backdrop-filter: none !important;
     }
     
@@ -47,24 +46,22 @@
       opacity: 1 !important;
     }
     
-    /* Remove blur effects */
+    /* Remove only heavy blur effects */
     .blur-2xl,
     .blur-3xl {
       filter: none !important;
     }
     
-    /* Simplify gradients */
-    .bg-gradient-to-br,
-    .bg-gradient-to-r,
-    .bg-gradient-to-t {
-      background: #ffffff !important;
+    /* Keep gradients but simplify complex ones */
+    .bg-gradient-to-br {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #eff6ff 100%) !important;
     }
     
     /* Remove complex shadows */
     .shadow-soft,
     .shadow-large,
     .shadow-glow {
-      box-shadow: none !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
     }
     
     /* Disable hover effects */
