@@ -40,6 +40,13 @@
       backdrop-filter: none !important;
     }
     
+    /* Keep icons visible */
+    svg {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
     /* Remove blur effects */
     .blur-2xl,
     .blur-3xl {
