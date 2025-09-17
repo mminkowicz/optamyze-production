@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import OurStory from './components/OurStory';
 import Clients from './components/Clients';
 import Services from './components/Services';
+import Process from './components/Process';
 
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,6 +19,7 @@ function HomePage() {
       <Hero />
       <OurStory />
       <Services />
+      <Process />
       <Clients />
       <Contact />
     </>
