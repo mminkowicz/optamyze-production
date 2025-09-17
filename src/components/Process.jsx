@@ -122,7 +122,7 @@ export default function Process() {
                 </div>
 
                 {/* Step Content */}
-                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
                     {step.title}
                   </h3>
