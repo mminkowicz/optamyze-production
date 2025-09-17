@@ -15,7 +15,7 @@ const contactMethods = [
     value: 'mendel@optamyze.com',
     action: 'Send Email',
     color: 'blue',
-    link: 'mailto:mendel@optamyze.com'
+    link: 'mailto:mendel@optamyze.com?subject=Business Systems Consultation&body=Hi Mendel,%0D%0A%0D%0AI would like to discuss optimizing my business systems.%0D%0A%0D%0APlease let me know when you are available for a consultation.%0D%0A%0D%0AThank you!'
   },
   {
     icon: Phone,
@@ -102,6 +102,11 @@ export default function Contact() {
 
   const handleBookMeeting = () => {
     setShowMeetingModal(true);
+  };
+
+  const handleEmailClick = () => {
+    // Try to open email client
+    window.location.href = 'mailto:mendel@optamyze.com?subject=Business Systems Consultation&body=Hi Mendel,%0D%0A%0D%0AI would like to discuss optimizing my business systems.%0D%0A%0D%0APlease let me know when you are available for a consultation.%0D%0A%0D%0AThank you!';
   };
 
   // Load HubSpot meetings script when modal opens
@@ -338,6 +343,17 @@ export default function Contact() {
                   {method.action === 'Book Now' ? (
                     <button
                       onClick={handleBookMeeting}
+                      className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
+                        method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
+                        method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
+                        'bg-purple-600 hover:bg-purple-700'
+                      }`}
+                    >
+                      {method.action}
+                    </button>
+                  ) : method.action === 'Send Email' ? (
+                    <button
+                      onClick={handleEmailClick}
                       className={`px-4 py-2 text-white rounded-lg text-sm font-semibold transition-colors ${
                         method.color === 'blue' ? 'bg-blue-600 hover:bg-blue-700' :
                         method.color === 'green' ? 'bg-green-600 hover:bg-green-700' :
