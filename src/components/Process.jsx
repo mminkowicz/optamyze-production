@@ -105,10 +105,11 @@ export default function Process() {
 
         {/* Process Steps */}
         <div className="relative">
-          {/* Connection Line */}
+          {/* Connection Line - Desktop only */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-yellow-200 via-green-200 via-purple-200 to-red-200 transform -translate-y-1/2 z-0"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative z-10">
+          {/* Desktop Layout */}
+          <div className="hidden lg:grid lg:grid-cols-5 gap-8 relative z-10">
             {processSteps.map((step, index) => (
               <div key={step.id} className="text-center group">
                 {/* Step Number & Icon */}
@@ -140,12 +141,47 @@ export default function Process() {
                     ))}
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
 
-                {/* Arrow for mobile */}
-                {index < processSteps.length - 1 && (
-                  <div className="lg:hidden flex justify-center mt-6">
-                    <ArrowRight className="w-5 h-5 text-gray-400" />
+          {/* Mobile Layout - Vertical Timeline */}
+          <div className="lg:hidden space-y-6">
+            {processSteps.map((step, index) => (
+              <div key={step.id} className="flex items-start gap-4">
+                {/* Mobile Step Number & Icon */}
+                <div className="flex-shrink-0">
+                  <div className={`w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center relative`}>
+                    <step.icon className={`w-8 h-8 ${step.color}`} />
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-xs font-bold text-gray-700">{step.id}</span>
+                    </div>
                   </div>
+                </div>
+
+                {/* Mobile Step Content */}
+                <div className="flex-1 bg-white rounded-lg p-4 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                    {step.description}
+                  </p>
+                  
+                  {/* Mobile Step Details */}
+                  <div className="space-y-1">
+                    {step.details.map((detail, detailIndex) => (
+                      <div key={detailIndex} className="flex items-center gap-2 text-xs text-gray-500">
+                        <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></div>
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile Arrow */}
+                {index < processSteps.length - 1 && (
+                  <div className="absolute left-8 mt-16 w-0.5 h-6 bg-gray-200"></div>
                 )}
               </div>
             ))}
