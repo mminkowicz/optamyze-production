@@ -104,9 +104,30 @@ export default function Contact() {
     setShowMeetingModal(true);
   };
 
-  const handleEmailClick = () => {
-    // Try to open email client
-    window.location.href = 'mailto:mendel@optamyze.com?subject=Business Systems Consultation&body=Hi Mendel,%0D%0A%0D%0AI would like to discuss optimizing my business systems.%0D%0A%0D%0APlease let me know when you are available for a consultation.%0D%0A%0D%0AThank you!';
+  const handleEmailClick = (e) => {
+    e.preventDefault();
+    console.log('Email button clicked!'); // Debug log
+    
+    // Create a temporary link element to trigger mailto
+    const mailtoLink = 'mailto:mendel@optamyze.com?subject=Business Systems Consultation&body=Hi Mendel,%0D%0A%0D%0AI would like to discuss optimizing my business systems.%0D%0A%0D%0APlease let me know when you are available for a consultation.%0D%0A%0D%0AThank you!';
+    
+    console.log('Attempting to open:', mailtoLink); // Debug log
+    
+    // Try multiple methods to ensure it works
+    try {
+      // Method 1: Create temporary link
+      const tempLink = document.createElement('a');
+      tempLink.href = mailtoLink;
+      tempLink.target = '_self';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+      console.log('Method 1 (temp link) executed'); // Debug log
+    } catch (error) {
+      console.log('Method 1 failed, trying method 2:', error); // Debug log
+      // Method 2: Fallback to window.location
+      window.location.href = mailtoLink;
+    }
   };
 
   // Load HubSpot meetings script when modal opens
