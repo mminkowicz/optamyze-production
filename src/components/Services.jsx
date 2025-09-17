@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   FaTools,
   FaCogs,
@@ -181,18 +181,6 @@ const platforms = [
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const openServiceModal = (service) => {
     setSelectedService(service);
@@ -322,15 +310,27 @@ export default function Services() {
           <p className="text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
             Platforms We Work With
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {platforms.map((p) => (
-              <img
-                key={p.name}
-                src={p.src}
-                alt={p.name}
-                className="h-12 sm:h-16 w-auto max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity"
-              />
-            ))}
+          <div className="relative overflow-hidden">
+            <div className="flex items-center gap-12 animate-scroll">
+              {/* First set of logos */}
+              {platforms.map((p) => (
+                <img
+                  key={`first-${p.name}`}
+                  src={p.src}
+                  alt={p.name}
+                  className="h-12 sm:h-16 w-auto max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
+                />
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {platforms.map((p) => (
+                <img
+                  key={`second-${p.name}`}
+                  src={p.src}
+                  alt={p.name}
+                  className="h-12 sm:h-16 w-auto max-w-[120px] object-contain opacity-80 hover:opacity-100 transition-opacity flex-shrink-0"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

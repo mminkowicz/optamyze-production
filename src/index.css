@@ -40,6 +40,11 @@
       backdrop-filter: none !important;
     }
     
+    /* Disable scrolling animation on mobile */
+    .animate-scroll {
+      animation: none !important;
+    }
+    
     /* Keep icons visible */
     svg {
       display: inline-block !important;
@@ -202,5 +207,25 @@
 
   .grid-auto-fill {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  /* Scrolling animation for platform logos */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+  }
+
+  /* Pause animation on hover */
+  .animate-scroll:hover {
+    animation-play-state: paused;
   }
 }
