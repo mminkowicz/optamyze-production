@@ -1,223 +1,191 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   Search, 
   Lightbulb, 
   Settings, 
   Rocket, 
-  Heart,
-  ArrowRight,
-  CheckCircle
+  CheckCircle, 
+  Headphones 
 } from 'lucide-react';
 
 const processSteps = [
   {
-    id: 1,
-    title: 'Discovery & Analysis',
-    description: 'We dive deep into your current systems, processes, and pain points to understand exactly what needs to be optimized.',
+    step: "01",
+    title: "Discovery & Analysis",
+    description: "We dive deep into your business processes, pain points, and goals to understand exactly what you need.",
     icon: Search,
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-100',
+    gradient: "from-blue-500 to-cyan-500",
     details: [
-      'Current system audit',
-      'Process mapping',
-      'Pain point identification',
-      'ROI opportunity analysis'
+      "Business process mapping",
+      "Current system audit",
+      "Stakeholder interviews",
+      "Requirements gathering"
     ]
   },
   {
-    id: 2,
-    title: 'Strategy & Planning',
-    description: 'We design a custom solution strategy tailored to your specific business needs and growth goals.',
+    step: "02",
+    title: "Strategy & Planning",
+    description: "We design a comprehensive roadmap that aligns your technology with your business objectives.",
     icon: Lightbulb,
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-100',
+    gradient: "from-purple-500 to-pink-500",
     details: [
-      'Custom solution design',
-      'Technology roadmap',
-      'Implementation timeline',
-      'Success metrics definition'
+      "System architecture design",
+      "Tool selection & evaluation",
+      "Implementation timeline",
+      "Resource planning"
     ]
   },
   {
-    id: 3,
-    title: 'Build & Configure',
-    description: 'Our team builds and configures your systems with precision, ensuring everything works seamlessly together.',
+    step: "03",
+    title: "Customization & Setup",
+    description: "We build and configure your systems exactly how you need them, with all the integrations and automations.",
     icon: Settings,
-    color: 'text-green-600',
-    bgColor: 'bg-green-100',
+    gradient: "from-green-500 to-emerald-500",
     details: [
-      'System configuration',
-      'Custom development',
-      'Integration setup',
-      'Quality assurance testing'
+      "System configuration",
+      "Custom field creation",
+      "Workflow automation",
+      "Third-party integrations"
     ]
   },
   {
-    id: 4,
-    title: 'Launch & Deploy',
-    description: 'We launch your new systems with comprehensive training and support to ensure smooth adoption.',
+    step: "04",
+    title: "Testing & Launch",
+    description: "We thoroughly test everything and launch your new system with full support and monitoring.",
     icon: Rocket,
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-100',
+    gradient: "from-orange-500 to-red-500",
     details: [
-      'System deployment',
-      'Team training',
-      'Go-live support',
-      'Performance monitoring'
+      "Comprehensive testing",
+      "User acceptance testing",
+      "Data migration",
+      "Go-live support"
     ]
   },
   {
-    id: 5,
-    title: 'Optimize & Scale',
-    description: 'We continuously monitor, optimize, and scale your systems as your business grows and evolves.',
-    icon: Heart,
-    color: 'text-red-600',
-    bgColor: 'bg-red-100',
+    step: "05",
+    title: "Training & Handover",
+    description: "We train your team and provide comprehensive documentation to ensure smooth adoption.",
+    icon: CheckCircle,
+    gradient: "from-teal-500 to-blue-500",
     details: [
-      'Performance optimization',
-      'Regular updates',
-      'Scalability planning',
-      'Ongoing support'
+      "Team training sessions",
+      "Documentation creation",
+      "Best practices guide",
+      "Knowledge transfer"
+    ]
+  },
+  {
+    step: "06",
+    title: "Ongoing Support",
+    description: "We provide continuous support, maintenance, and optimization to keep your systems running perfectly.",
+    icon: Headphones,
+    gradient: "from-indigo-500 to-purple-500",
+    details: [
+      "24/7 technical support",
+      "Regular maintenance",
+      "Performance monitoring",
+      "Continuous optimization"
     ]
   }
 ];
 
 export default function Process() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section id="process" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-flex items-center px-4 py-2 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-6">
-            <CheckCircle className="w-4 h-4 mr-2" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Our Process
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            How We Transform Your Business
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our proven 5-step process ensures your systems are built right, deployed smoothly, 
-            and optimized for long-term success.
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            We follow a proven methodology that ensures your CRM implementation is successful, 
+            efficient, and delivers real business value from day one.
           </p>
-        </div>
+        </motion.div>
 
         {/* Process Steps */}
-        <div className="relative">
-          {/* Connection Line - Desktop only */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-yellow-200 via-green-200 via-purple-200 to-red-200 transform -translate-y-1/2 z-0"></div>
-          
-          {/* Desktop Layout */}
-          <div className="hidden lg:grid lg:grid-cols-5 gap-8 relative z-10">
-            {processSteps.map((step, index) => (
-              <div key={step.id} className="text-center group">
-                {/* Step Number & Icon */}
-                <div className="relative mb-6">
-                  <div className={`w-20 h-20 rounded-full ${step.bgColor} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon className={`w-10 h-10 ${step.color}`} />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-gray-700">{step.id}</span>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {processSteps.map((step, index) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div className="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 transition-all duration-500 transform hover:-translate-y-2">
+                
+                {/* Step Number */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-gray-900 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  {step.step}
                 </div>
 
-                {/* Step Content */}
-                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {step.description}
-                  </p>
-                  
-                  {/* Step Details */}
-                  <div className="space-y-2">
-                    {step.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center gap-2 text-xs text-gray-500">
-                        <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></div>
-                        <span>{detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Layout - Vertical Timeline */}
-          <div className="lg:hidden space-y-6">
-            {processSteps.map((step, index) => (
-              <div key={step.id} className="flex items-start gap-4">
-                {/* Mobile Step Number & Icon */}
-                <div className="flex-shrink-0">
-                  <div className={`w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center relative`}>
-                    <step.icon className={`w-8 h-8 ${step.color}`} />
-                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-xs font-bold text-gray-700">{step.id}</span>
-                    </div>
-                  </div>
+                {/* Icon */}
+                <div className={`w-16 h-16 mb-6 rounded-2xl bg-gradient-to-r ${step.gradient} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
+                  <step.icon className="w-8 h-8 text-white" />
                 </div>
 
-                {/* Mobile Step Content */}
-                <div className="flex-1 bg-white rounded-lg p-4 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                    {step.description}
-                  </p>
-                  
-                  {/* Mobile Step Details */}
-                  <div className="space-y-1">
-                    {step.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center gap-2 text-xs text-gray-500">
-                        <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0"></div>
-                        <span>{detail}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {/* Content */}
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {step.title}
+                </h3>
+                
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {step.description}
+                </p>
 
-                {/* Mobile Arrow */}
+                {/* Details List */}
+                <ul className="space-y-2">
+                  {step.details.map((detail, detailIndex) => (
+                    <li key={detailIndex} className="flex items-center text-sm text-gray-500">
+                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></div>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Connection Line */}
                 {index < processSteps.length - 1 && (
-                  <div className="absolute left-8 mt-16 w-0.5 h-6 bg-gray-200"></div>
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-gray-300 to-transparent transform -translate-y-1/2"></div>
                 )}
               </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 shadow-sm max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Ready to Transform Your Business?
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <h3 className="text-2xl font-bold mb-4">
+              Ready to Transform Your Business Systems?
             </h3>
-            <p className="text-gray-600 mb-6">
-              Let's start with a free discovery call to understand your needs and show you 
-              exactly how we can help optimize your systems.
+            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+              Let's discuss your needs and create a custom implementation plan that fits your timeline and budget.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://calendar.app.google/7JhbHhJhNG9fHj849"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Start Your Free Discovery Call
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Learn More About Our Process
-              </button>
-            </div>
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
+              Start Your Project
+            </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-}
+} 

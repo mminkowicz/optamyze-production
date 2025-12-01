@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Clock, CheckCircle } from "lucide-react";
 
 export default function BookCall() {
   return (
-    <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+    <section id="contact" className="py-24 lg:py-32 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
