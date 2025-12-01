@@ -16,7 +16,7 @@ const generateSitemap = async () => {
   ];
 
   // IMPORTANT: Replace 'https://your-domain.com' with your actual website domain.
-  const sitemapStream = new SitemapStream({ hostname: 'https://simploraconsulting.vercel.app' });
+  const sitemapStream = new SitemapStream({ hostname: 'https://www.optamyze.com' });
 
   const writeStream = createWriteStream(path.resolve(__dirname, 'public/sitemap.xml'));
   sitemapStream.pipe(writeStream);
